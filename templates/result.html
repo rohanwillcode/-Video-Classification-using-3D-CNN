@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f0f4f7, #d9e4ec);
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .container {
+            margin-top: 80px;
+            max-width: 800px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background-color: #ffffffee;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-label {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #36d1dc;
+            margin-bottom: 20px;
+        }
+
+        video {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 2px solid #5b86e5;
+        }
+
+        .btn-custom {
+            margin-top: 30px;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            border: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .btn-custom:hover {
+            opacity: 0.95;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">🎥 Smart Video Classifier</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#usage">How It Works</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <div class="card">
+            <h2 class="mb-4">🔍 Prediction Result</h2>
+            <p class="result-label">Predicted Action: {{ label }}</p>
+            <video controls>
+                <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="/" class="btn btn-custom">🔁 Classify Another Video</a>
+        </div>
+    </div>
+</body>
+</html>
